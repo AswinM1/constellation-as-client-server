@@ -1,3 +1,5 @@
+import { loadStripe } from '@stripe/stripe-js';
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'; // To navigate user to another page
@@ -9,15 +11,29 @@ function Cart({ signIn }) {
 
   const totalAmount = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
 
-  const handlePayment = () => {
-    if (!signIn) {
-      // If not signed in, show message and possibly redirect to sign-in page
-      alert("Please sign in to complete the payment.");
-      navigate("/signin"); // Optional: Redirect to sign-in page if not signed in
-    } else {
-      // Simulate payment process and show success
-      setPaymentSuccess(true);
-    }
+  const handlePayment = async() => {
+    // if (!signIn) {
+    //   // If not signed in, show message and possibly redirect to sign-in page
+    //   alert("Please sign in to complete the payment.");
+    //   navigate("/signin"); // Optional: Redirect to sign-in page if not signed in
+    // } else {
+      
+      const stripe=loadStripe("pk_test_51Qc8rlAT1eWiCvxUHaqzpQbfA0AJD5xtFFOkBKrCLVz13BCyeAt6zQEcSPETblVWJSZCg9TDqaBRBTLGnRJqwFeo000mmEHxhf");
+      const body={
+        products:cartItems
+      }
+      const response= await axios.post("https://localhost:3000/payment",{body})
+      console.log(response);
+      const session=await response.data
+
+      const result=stripe.redirectToCheckout({
+        sessionId:session.id
+      })
+
+
+      
+    
+    
   };
 
   return (

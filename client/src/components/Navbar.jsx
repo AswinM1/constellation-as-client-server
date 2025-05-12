@@ -20,19 +20,19 @@ function Navbar() {
   };
 
   return (
-    <div className="text-1xl w-full h-16 flex items-center justify-between px-4 font-sans fixed top-0 bg-white shadow-md z-10">
-      <div className="text-black font-bold ml-10 font-serif">Constellations</div>
+    <div className="text-1xl w-full h-16 flex items-center justify-between px-4 font-sans fixed top-0 backdrop-blur-lg text-white shadow-md z-10 border-dashed">
+      <div className="text-white font-black ml-10 ">CONSTELLATIONS</div>
 
       {/* Hamburger button for mobile */}
       <div className="block lg:hidden">
-        <button onClick={toggleMenu} className="text-black">
+        <button onClick={toggleMenu} className="text-white">
           ☰
         </button>
       </div>
 
-      {/* Desktop menu */}
+    
       <div className="hidden lg:flex space-x-6">
-        <ul className="flex space-x-6 text-black mr-20">
+        <ul className="flex space-x-6 text-white font-light mr-20">
           <li>
             <NavLink
               to="/"

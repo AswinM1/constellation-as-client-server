@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body
+{
+  background-color: rgb(10,10,10);
+}
 
 /* Marquee Animation */
 @keyframes marquee {

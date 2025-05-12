@@ -11,6 +11,7 @@ import Product from './components/Product';
 
 import Admin from './components/Admin';
 import Cart from './components/Cart';
+import ProductDetails from './components/ProductDetails';
 
 function App() {
  // Destructure the values from ThemeContext
@@ -23,7 +24,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/products" element={<Product />} />
-      
+        <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/admin" element={<Admin></Admin>} />
         <Route path="/cart" element={<Cart></Cart>} />
       </Routes>
